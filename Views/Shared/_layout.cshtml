@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    @* Asp-append-version ser till att senaste versionen av CSS-filen laddas automatiskt *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <title>Fotografiska</title>
+</head>
+
+<body>
+    <nav class="navbar border-body navbar-expand-lg sticky-top box-shadow py-3">
+        <div class="container-fluid px-4">
+            @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till och Asp-controller specificerar controllern som används *@
+            <a asp-action="Index" asp-controller="Home"
+                class="navbar-brand fs-3 flex-grow-1"><strong>FOTOGRAFISKA</strong></a>
+            @* Razor-syntax kontrollerar om användaren är inloggad eller inte. Om användaren är inloggad kommer datan i blocket renderas *@
+            @* User representerar den aktuella användaren, identity ger information om användarens identitet och isAuthenticated ser om användaren är inloggad *@
+            @if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <p class="fst-italic px-4 mb-0">Your in admin mode</p>
+            }
+            @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till och Asp-controller specificerar vilken controller som används *@
+            <a class="btn btn-prop px-4" type="submit" asp-action="Index" asp-controller="Artist">Artists</a>
+            <a class="btn btn-prop px-4" type="submit" asp-action="Index" asp-controller="ArtExhibition">Art
+                exhibitions</a>
+
+            @if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-prop btn-prop-outline px-4" type="submit" asp-action="SignOutUser"
+                    asp-controller="User">Logout</a>
+            }
+            else
+            {
+                <a class="btn btn-prop btn-prop-outline px-4" type="submit" asp-action="Index"
+                    asp-controller="User">Login</a>
+            }
+        </div>
+    </nav>
+    <main class="main-content">
+        @* Renderar innehållet från den aktuella vyn i layout-filen *@
+        @RenderBody()
+    </main>
+    <footer class="footer-prop d-flex justify-content-center align-items-center">
+        <p class="pe-3 mb-0">© 2024 Fotografiska</p>
+        @if (User?.Identity != null && User.Identity.IsAuthenticated)
+        {
+            @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till och Asp-controller specificerar controllern som används *@
+            <a asp-action="SignOutUser" asp-controller="User" class="logout-btn">Logout</a>
+        }
+        else
+        {
+            <a asp-action="Index" asp-controller="User" class="logout-btn">Login</a>
+        }
+    </footer>
+</body>
+
+</html>

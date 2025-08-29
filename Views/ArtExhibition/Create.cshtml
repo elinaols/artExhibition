@@ -1,0 +1,33 @@
+﻿@* Kopplar vyn till modellen ArtExhibitions *@
+@model ArtExhibitions
+@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="d-flex justify-content-center my-5">
+    <h2 class="fs-1">Add your art exhibition</h2>
+</div>
+<div class="d-flex justify-content-center my-5">
+    @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till *@
+    <form asp-action="Create">
+        <div class="py-2 d-flex justify-content-between">
+            <strong class="pe-3">Exhibition title</strong>
+            @* Asp-for kopplar input-fältet till egenskapen ExhibitionTitle från modellen *@
+            <input asp-for="ExhibitionTitle">
+        </div>
+        <div class="py-2 d-flex justify-content-between">
+            <strong class="pe-3">Write some more about your exhibition</strong>
+            @* Asp-for kopplar input-fältet till egenskapen Description från modellen *@
+            <input asp-for="Description">
+        </div>
+        <div class="py-2 d-flex justify-content-between">
+            <strong class="pe-3">Artist</strong>
+            @* Asp-for() kopplar dropdown-listan till ArtistId och asp-items() fyller listan med data från ViewBag.ArtistId *@
+            <select asp-for=ArtistId asp-items="ViewBag.ArtistId"></select>
+        </div>
+        <div class="py-2 float-end create-btn-color">
+            @* Knapp som skickar formuläret *@
+            <input class="rounded" type="submit" value="Create">
+        </div>
+    </form>
+</div>

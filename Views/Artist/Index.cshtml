@@ -1,0 +1,47 @@
+﻿@* Kopplar vyn till en lista av modellen Artists *@
+@model List<Artists>
+@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="hero-artist d-flex justify-content-center align-items-center mb-5">
+    <h1 class="artist-txt-color">Artists</h1>
+</div>
+<div class="d-flex justify-content-center mb-5">
+    @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till och Asp-controller specificerar vilken controller som används *@
+    <a class="fs-3 btn btn-prop link-prop px-4" asp-action="Create" asp-controller="Artist">Add artist</a>
+</div>
+<div class="d-flex justify-content-center">
+    <table class="table mb-5">
+        <thead>
+            <tr>
+                <td><strong>First name</strong></td>
+                <td><strong>Last name</strong></td>
+                @* Razor-syntax som kontrollerar om användaren är inloggad eller inte. Om användaren är inloggad kommer datan i blocket renderas *@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td><strong>Edit artist</strong></td>
+                    <td><strong>Remove artist</strong></td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in Model)
+            {
+                <tr>
+                    @* @Html.DisplayFor() visar värdet av respektive (angiven) egenskap från modellen *@
+                    <td>@Html.DisplayFor(item => artist.FirstName)</td>
+                    <td>@Html.DisplayFor(item => artist.LastName)</td>
+                    @* Razor-syntax som kontrollerar om användaren är inloggad. Om användaren är inloggad kommer datan i blocket renderas *@
+                    @if (User.Identity.IsAuthenticated)
+                     {
+                        <td><a class="table-link-color" asp-action="Edit" asp-route-id="@artist.Id">Edit</a></td>
+                        @* Asp-action metoden används för att skapa länk till en specifik metod i controllern *@
+                        @* Asp-route-id hjälper till att skicka med det specifika id-värdet för utställningen *@
+                        <td><a class="table-link-color" asp-action="Delete" asp-route-id="@artist.Id">Delete</a></td>
+                     }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

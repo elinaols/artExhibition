@@ -1,0 +1,22 @@
+﻿@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="hero"></div>
+<div class="main d-flex justify-content-center">
+    <h1 class="py-3 img-text"><strong>FOTOGRAFISKA</strong></h1>
+</div>
+<div class="this-weeks-happenings">
+    <div class="joker-bg-color d-flex justify-content-between">
+        <p class="fs-3 ps-4 py-4">Art Exibition today 12/10 at 14.30</p>
+        <img src="images/joker.webp" alt="Art Exhibition of the Joker">
+    </div>
+    <div class="d-flex justify-content-center my-5">
+        @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till *@
+        <a asp-action="Index" asp-controller="Upload" class="fs-3 btn btn-prop link-prop px-4">Explore the upcoming exhibitions here</a>
+    </div>
+    <div class="lives-matter-color d-flex justify-content-between">
+        <p class="fs-3 ps-4 py-4">Art Exibition Wednesday 15/10 at 17.00</p>
+        <img src="images/black-lives-matter.webp" alt="Art Exhibition of Black Lives Matter">
+    </div>
+</div>

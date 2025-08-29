@@ -1,0 +1,186 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: floralwhite;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/*
+    _layout
+*/
+
+.navbar, footer {
+    background-color: white;
+}
+
+.navbar-brand, .btn, .dropdown, footer, h1 {
+    font-family: monospace;
+    color: #4B4B4B;
+}
+
+.navbar-brand, .dropdown:hover {
+    transform: scale(1.01);
+}
+
+.btn-prop, .btn {
+    font-size: 1.1rem;
+}
+
+.btn-prop-outline, .link-prop {
+    border: 1px solid #4B4B4B;
+}
+
+.btn-prop:hover {
+    color: #000f;
+    text-decoration: underline;
+    transform: scale(1.03);
+}
+
+/*
+    home
+*/
+
+.hero {
+    width: 100%;
+    height: 440px;
+    background-image: url('../images/fotografiska.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.img-text {
+    background-image: url(../images/black-n-blue.webp);
+    background-size: cover;
+    /* Background-clip hjälper till att sätta bilden i texten */
+    background-clip: text;
+    /* Ger transparent för att ta bort den svarta text-färgen */
+    color: transparent;
+}
+
+.this-weeks-happenings {
+    width: 100%;
+}
+
+.this-weeks-happenings img {
+    width: 500px;
+    height: auto;
+}
+
+.joker-bg-color {
+    background-color: #8B99B2;
+}
+
+.lives-matter-color {
+    background-color: #67484C;
+    color: #a6c1bd;
+}
+
+.footer-prop {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+
+.warning-text {
+    color: red;
+}
+
+/*
+    artexhibition
+*/
+
+.hero-art-exhibition {
+    width: 100%;
+    height: 375px;
+    background-image: url('../images/dolls.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-art-exhibition h1 {
+    color: white;
+    opacity: 40%
+}
+
+/*
+    artist
+*/
+
+.hero-artist {
+    width: 100%;
+    height: 375px;
+    background-image: url('../images/king-arthur.webp');
+    background-size: cover;
+    background-position: 100% 35%;
+}
+
+.artist-txt-color {
+    color: floralwhite;
+}
+
+/*
+    upload
+*/
+
+.hero-upload {
+    width: 100%;
+    height: 375px;
+    background-image: url('../images/birmingham.webp');
+    background-size: cover;
+    background-position: 100% 30%;
+}
+
+.uploaded-img-size {
+    width: auto;
+    height: 600px;
+}
+
+/*
+    shared classes
+*/
+div .table {
+    width: 80%;
+}
+
+.table-link-color, .logout-btn {
+    color: #000f;
+}
+
+.create-btn-color input {
+    background-color: #000f;
+    color: floralwhite;
+}
+
+.create-form-size {
+    width: 50px;
+}
+
+h1 {
+    font-size: 7rem;
+    color: #000f;
+}

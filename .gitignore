@@ -1,0 +1,25 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
+
+# Build results
+*.dll
+*.exe
+*.pdb
+
+# NuGet
+*.nupkg
+packages/
+
+# ASP.NET
+wwwroot/uploads/
+appsettings.Development.json
+artExhibition.db
+
+# Rider/IDE
+.idea/
+*.iml

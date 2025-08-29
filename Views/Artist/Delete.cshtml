@@ -1,0 +1,31 @@
+﻿@* Kopplar vyn till modellen Artists *@
+@model Artists
+@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="d-flex justify-content-center my-5">
+    <h2 class="fs-1">Are you sure you want to delete this?</h2>
+</div>
+<div class="d-flex justify-content-center my-5">
+    <div class="d-flex justify-content-center">
+        <div class="px-4">
+            <strong>First name: </strong>
+            @* Visar värdet av FirstName från modellen *@
+            @Html.DisplayFor(item => item.FirstName)
+        </div>
+        <div class="px-4">
+            <strong>Last name: </strong>
+            @* Visar värdet av FirstName från modellen *@
+            @Html.DisplayFor(item => item.LastName)
+        </div>
+    </div>
+    @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till *@
+    <form asp-action="Delete">
+        @* Id döljs för användaren, men inkluderas när formuläret skickas för att identifiera vilken konstutställning som ska tas bort *@
+        <input type="hidden" asp-for="Id">
+        <div class="create-btn-color">
+            <input class="rounded" type="submit" value="Delete">
+        </div>
+    </form>
+</div>

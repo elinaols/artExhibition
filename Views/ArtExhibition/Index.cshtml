@@ -1,0 +1,54 @@
+﻿@* Kopplar vyn till en lista av modellen ArtExhibitions *@
+@model List<ArtExhibitions>
+@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="hero-art-exhibition d-flex justify-content-center align-items-center mb-5">
+    <h1>More exhibitions is coming</h1>
+</div>
+<div class="d-flex justify-content-center mb-5">
+    @* Asp-action anger vilken metod i controllern som formuläret ska skicka data till *@
+    <a asp-action="Create" class="fs-3 btn btn-prop link-prop px-4">Add your art exhibitions</a>
+</div>
+<div class="d-flex justify-content-center">
+    <table class="table mb-5">
+        <thead>
+            <tr>
+                <td><strong>Art exhibition title</strong></td>
+                <td><strong>Artist</strong></td>
+                <td><strong>See more information about this artwork</strong></td>
+                @* Razor-syntax som kontrollerar om användaren är inloggad. Om användaren är inloggad kommer datan i blocket renderas *@
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td><strong>Edit</strong></td>
+                    <td><strong>Delete</strong></td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var exhibition in Model)
+                {
+                <tr>
+                    @* @Html.DisplayFor() visar värdet av respektive (angiven) egenskap från modellen *@
+                    <td>
+                        @Html.DisplayFor(item => exhibition.ExhibitionTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(item => exhibition.Artist.FirstName) 
+                        @Html.DisplayFor(item => exhibition.Artist.LastName)
+                    </td>
+                    @* Asp-action metoden används för att skapa länk till en specifik metod i controllern *@
+                    @* Asp-route-id hjälper till att skicka med det specifika id-värdet för utställningen *@
+                    <td><a class="table-link-color" asp-action="Details" asp-route-id="@exhibition.Id">Description</a></td>
+                    @* Razor-syntax som kontrollerar om användaren är inloggad eller inte. Om användaren är inloggad kommer datan i blocket renderas *@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <td><a class="table-link-color" asp-action="Edit" asp-route-id="@exhibition.Id">Edit</a></td>
+                        <td><a class="table-link-color" asp-action="Delete" asp-route-id="@exhibition.Id">Delete</a></td>
+                    }
+                </tr>
+                }
+        </tbody>
+    </table>
+</div>

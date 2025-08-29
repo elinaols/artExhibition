@@ -1,0 +1,36 @@
+﻿@* Kopplar vyn till modellen Users *@
+@model Users
+@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="d-flex justify-content-center my-5">
+    <h2 class="fs-1">Login to your account</h2>
+</div>
+<div class="d-flex justify-content-center my-5 flex-column align-items-center">
+    @* Omdirigerar användaren till returnURL om den finns, annars till Index-sidan *@
+    <form asp-action="Index" asp-route-returnurl="@ViewData["returnUrl"]">
+        <table class="mb-5">
+            <tr class="py-2 d-flex justify-content-between">
+                <td class="pe-3">Användarnamn</td>
+                @* Skapar ett inmatningsfält för användarnamn *@
+                <td>@Html.EditorFor(u => u.Username)</td>
+            </tr>
+            <tr class="py-2 d-flex justify-content-between">
+                <td>Lösenord</td>
+                @* Genererar ett lösenordsfält där amvändaren kan ange sitt lösenord *@
+                <td>@Html.PasswordFor(p => p.Password)</td>
+            </tr>
+            <tr class="py-2 float-end create-btn-color">
+                <td>
+                    @* Knapp som skickar formuläret *@
+                    <input class="rounded" type="submit" value="Login">
+                </td>
+            </tr>
+        </table>
+    </form>
+    @* ViewBag hjälper till att överföra data från controllern till vyn *@
+    <p class="warning-text">
+        @ViewBag.ErrorMessage
+    </p>
+</div>

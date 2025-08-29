@@ -1,0 +1,33 @@
+﻿@* Kopplar vyn till en lista av modellen UploadFiles *@
+@model UploadFiles
+@* Använder _layout-filen för att ge enhetlig design *@
+@{
+    Layout = "_layout";
+}
+<div class="hero-upload d-flex justify-content-center align-items-center mb-5">
+    <h1>Upcoming exhibitions</h1>
+</div>
+@* Razor-syntax som kontrollerar om användaren är inloggad. Om användaren är inloggad kommer datan i blocket renderas *@
+@if (User.Identity.IsAuthenticated)
+{
+    @* Entype-metoden används för att formuläret ska kunna hantera filuppladdningar. Action-metoden anger vart datan ska skickas, vilket i detta fall till en metod i controllern.
+    HTTP-metoden 'POST' ska användas för att skicka data till servern. *@
+    <form enctype="multipart/form-data" action="/Upload/Upload/" method="post" class="d-flex justify-content-center align-items-center">
+        <div class="form-group">
+            @* Label för filuppladdning *@
+            <label for="file">Choose file to upload on the side</label>
+            @* Filinmatning där name="file" blir viktigt för att kunna identifiera och hantera filen i controllern *@
+            <input type="file" id="file" name="file" class="form-control-file" />
+        </div>
+        @* Knapp som skickar formuläret *@
+        <button type="submit" class="btn btn-prop btn-prop-outline">Upload file</button>
+    </form>
+}
+<div class="d-flex flex-row justify-content-around m-5 flex-wrap">
+    @* Hämtad från https://stackoverflow.com/questions/15989764/display-all-images-in-a-folder-in-mvc-with-a-foreach *@
+    @foreach (var image in Model.Images)
+    {
+        @* Url.Content(image) konvertera sökvägen på servern till en fullständig webbadress, så bilden visas upp korrekt i webbläsaren *@
+        <img src="@Url.Content(image)" class="uploaded-img-size p-3"/>
+    }
+</div>
