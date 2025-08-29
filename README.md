@@ -18,7 +18,7 @@ admin interface to manage artists and exhibitions.
 - SQLite (for local database)
 - Bootstrap
 
-Installation
+# Installation
 1. Clone the repository
    - git clone https://github.com/elinaols/artExhibition.git
 2. Open the project in Visual Studio
