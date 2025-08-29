@@ -20,7 +20,9 @@ admin interface to manage artists and exhibitions.
 
 # Installation
 1. Clone the repository
-   - git clone https://github.com/elinaols/artExhibition.git
+ ```bash
+   git clone https://github.com/elinaols/artExhibition.git
+```
 2. Open the project in Visual Studio
 3. Restore NuGet packages
 4. Build the project
